@@ -1130,7 +1130,7 @@
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSTextField" id="1031820183">
+						<object class="NSTextField" id="1025714307">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 59}, {386, 281}}</string>
@@ -1139,7 +1139,7 @@
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSAntiCompressionPriority">{250, 750}</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="733124879">
+							<object class="NSTextFieldCell" key="NSCell" id="124955224">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">272629760</int>
 								<string key="NSContents"/>
@@ -1149,7 +1149,7 @@
 									<int key="NSfFlags">16</int>
 								</object>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="1031820183"/>
+								<reference key="NSControlView" ref="1025714307"/>
 								<object class="NSColor" key="NSBackgroundColor">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
@@ -1172,7 +1172,7 @@
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 							<bool key="NSControlAutosetMaxLayoutWidth">YES</bool>
 						</object>
-						<object class="NSButton" id="878944751">
+						<object class="NSButton" id="156680203">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{321, 13}, {92, 32}}</string>
@@ -1180,7 +1180,7 @@
 							<reference key="NSWindow"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="71331419">
+							<object class="NSButtonCell" key="NSCell" id="523844755">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">OK</string>
@@ -1190,7 +1190,7 @@
 									<int key="NSfFlags">1044</int>
 								</object>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="878944751"/>
+								<reference key="NSControlView" ref="156680203"/>
 								<int key="NSButtonFlags">-2038284288</int>
 								<int key="NSButtonFlags2">129</int>
 								<string key="NSAlternateContents"/>
@@ -1746,9 +1746,17 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">okBtnClicked:</string>
 						<reference key="source" ref="122566169"/>
-						<reference key="destination" ref="878944751"/>
+						<reference key="destination" ref="156680203"/>
 					</object>
 					<int key="connectionID">460</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">textField</string>
+						<reference key="source" ref="122566169"/>
+						<reference key="destination" ref="1025714307"/>
+					</object>
+					<int key="connectionID">461</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2336,8 +2344,8 @@
 						<reference key="object" ref="439893737"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1031820183"/>
-							<reference ref="878944751"/>
+							<reference ref="1025714307"/>
+							<reference ref="156680203"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -2665,31 +2673,31 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">450</int>
-						<reference key="object" ref="1031820183"/>
+						<reference key="object" ref="1025714307"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="733124879"/>
+							<reference ref="124955224"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">451</int>
-						<reference key="object" ref="733124879"/>
-						<reference key="parent" ref="1031820183"/>
+						<reference key="object" ref="124955224"/>
+						<reference key="parent" ref="1025714307"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">456</int>
-						<reference key="object" ref="878944751"/>
+						<reference key="object" ref="156680203"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="71331419"/>
+							<reference ref="523844755"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">457</int>
-						<reference key="object" ref="71331419"/>
-						<reference key="parent" ref="878944751"/>
+						<reference key="object" ref="523844755"/>
+						<reference key="parent" ref="156680203"/>
 					</object>
 				</object>
 			</object>
@@ -2984,7 +2992,7 @@
 				<reference key="dict.values" ref="1049"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">460</int>
+			<int key="maxID">461</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3008,6 +3016,17 @@
 						<string key="NS.key.0">okBtnClicked:</string>
 						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">okBtnClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">textField</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">textField</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">textField</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>

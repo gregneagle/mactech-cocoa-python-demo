@@ -11,6 +11,11 @@ from Foundation import *
 from AppKit import *
 
 class MTMainWindowController(NSWindowController):
+    
+    textField = IBOutlet()
+    
+    def awakeFromNib(self):
+        self.textField.setStringValue_(u'Hello World!')
 
     @IBAction
     def okBtnClicked_(self, sender):

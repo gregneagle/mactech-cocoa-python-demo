@@ -15,6 +15,7 @@ from PyObjCTools import AppHelper
 
 # import modules containing classes required to start application and load MainMenu.nib
 import MTAppDelegate
+import MTMainWindowController
 
 # pass control to AppKit
 AppHelper.runEventLoop()

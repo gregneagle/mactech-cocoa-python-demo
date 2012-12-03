@@ -15,6 +15,7 @@
 		C0300C19166C090200678AC4 /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = C0300C18166C090200678AC4 /* main.py */; };
 		C0300C1B166C090200678AC4 /* MTAppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = C0300C1A166C090200678AC4 /* MTAppDelegate.py */; };
 		C0300C1E166C090200678AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0300C1C166C090200678AC4 /* MainMenu.xib */; };
+		C0300C29166C4A8000678AC4 /* MTMainWindowController.py in Resources */ = {isa = PBXBuildFile; fileRef = C0300C28166C4A8000678AC4 /* MTMainWindowController.py */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C0300C18166C090200678AC4 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		C0300C1A166C090200678AC4 /* MTAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MTAppDelegate.py; sourceTree = "<group>"; };
 		C0300C1D166C090200678AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C0300C28166C4A8000678AC4 /* MTMainWindowController.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = MTMainWindowController.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				C0300C18166C090200678AC4 /* main.py */,
 				C0300C1A166C090200678AC4 /* MTAppDelegate.py */,
 				C0300C1C166C090200678AC4 /* MainMenu.xib */,
+				C0300C28166C4A8000678AC4 /* MTMainWindowController.py */,
 				C0300C0D166C090200678AC4 /* Supporting Files */,
 			);
 			path = Demo;
@@ -164,6 +167,7 @@
 				C0300C19166C090200678AC4 /* main.py in Resources */,
 				C0300C1B166C090200678AC4 /* MTAppDelegate.py in Resources */,
 				C0300C1E166C090200678AC4 /* MainMenu.xib in Resources */,
+				C0300C29166C4A8000678AC4 /* MTMainWindowController.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +304,7 @@
 				C0300C23166C090200678AC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

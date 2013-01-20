@@ -11,6 +11,7 @@ from Foundation import *
 from AppKit import *
 
 import os
+import subprocess
 
 class MTMainWindowController(NSWindowController):
 
@@ -104,6 +105,19 @@ class MTMainWindowController(NSWindowController):
     
         save_path = self.getSavePath_(applicationPath)
         NSLog('Save path: %s' % save_path)
+    
+        # call pkgbuild to build our package
+        pkgbuild = '/usr/bin/pkgbuild'
+        cmd = [pkgbuild,
+               '--install-location', installLocation,
+               '--component', applicationPath,
+               '--identifier', identifier,
+               '--version', version,
+               save_path]
+        try:
+            subprocess.check_call(cmd)
+        except subprocess.CalledProcessError, err:
+            NSLog('ERROR: %s' % err)
 
     def awakeFromNib(self):
         self.getApplication_(self)

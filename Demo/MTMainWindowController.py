@@ -16,6 +16,18 @@ class MTMainWindowController(NSWindowController):
     installLocationFld = IBOutlet()
     identifierFld = IBOutlet()
     versionFld = IBOutlet()
+    
+    @IBAction
+    def buildPackage_(self, sender):
+        applicationPath = self.applicationFld.stringValue()
+        installLocation = self.installLocationFld.stringValue()
+        identifier = self.identifierFld.stringValue()
+        version = self.versionFld.stringValue()
+        
+        NSLog('Application path: %s' % applicationPath)
+        NSLog('Install location: %s' % installLocation)
+        NSLog('Identifier: %s' % identifier)
+        NSLog('Version: %s' % version)
 
     def awakeFromNib(self):
         self.applicationFld.setStringValue_(u'/path/to/Some.app')

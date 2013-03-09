@@ -50,7 +50,25 @@ class MTMainWindowController(NSWindowController):
             # user clicked Cancel
             return None
 
-    
+    def getApplicationBundleInfo_(self, app_path):
+        '''Uses Foundation methods to read an application's 
+           Info.plist'''
+        
+        info_path = os.path.join(
+                    app_path, 'Contents/Info.plist')
+        if not os.path.exists(info_path):
+            return {}
+        
+        plistData = NSData.dataWithContentsOfFile_(
+                    info_path)
+        dataObject, plistFormat, error = \
+            NSPropertyListSerialization.propertyListFromData_mutabilityOption_format_errorDescription_(
+                plistData, NSPropertyListMutableContainers,
+                None, None)
+        if error:
+            return {}
+        return dataObject
+
     def getSavePath_(self, app_path):
         '''Uses app_path to generated a suggested name for
         the package to be saved, then opens a Save panel. 
@@ -90,6 +108,16 @@ class MTMainWindowController(NSWindowController):
         pathname = self.getApplicationPath()
         if pathname:
             self.applicationFld.setStringValue_(pathname)
+            info_dict = self.getApplicationBundleInfo_(
+                        pathname)
+            identifier = info_dict.get(
+                         'CFBundleIdentifier', '')
+            version = info_dict.get(
+                      'CFBundleShortVersionString', '')
+            self.identifierFld.setStringValue_(identifier)
+            self.versionFld.setStringValue_(version)
+            self.installLocationFld.setStringValue_(
+                u'/Applications')
             
     @IBAction
     def buildPackage_(self, sender):
@@ -105,7 +133,11 @@ class MTMainWindowController(NSWindowController):
     
         save_path = self.getSavePath_(applicationPath)
         NSLog('Save path: %s' % save_path)
-    
+        
+        if not save_path:
+            # user cancelled Save dialog
+            return
+        
         # call pkgbuild to build our package
         pkgbuild = '/usr/bin/pkgbuild'
         cmd = [pkgbuild,
@@ -122,5 +154,3 @@ class MTMainWindowController(NSWindowController):
     def awakeFromNib(self):
         self.getApplication_(self)
         self.installLocationFld.setStringValue_(u'/Applications')
-        self.identifierFld.setStringValue_(u'com.mactech.demo')
-        self.versionFld.setStringValue_(u'1.0')

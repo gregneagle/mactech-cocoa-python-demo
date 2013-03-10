@@ -19,6 +19,7 @@ class MTMainWindowController(NSWindowController):
     installLocationFld = IBOutlet()
     identifierFld = IBOutlet()
     versionFld = IBOutlet()
+    iconView = IBOutlet()
     
     def getApplicationPath(self):
         '''Display NSOpenPanel to get the path to an
@@ -49,6 +50,24 @@ class MTMainWindowController(NSWindowController):
         else:
             # user clicked Cancel
             return None
+
+    def getApplicationIcon_(self, app_path):
+        '''Returns an icon for display'''
+        app_name = os.path.basename(app_path)
+        app_name = os.path.splitext(app_name)[0]
+        info = self.getApplicationBundleInfo_(app_path)
+        icon_filename = (info.get('CFBundleIconFile')
+                         or app_name)
+        icon_path = os.path.join(
+           app_path, 'Contents/Resources', icon_filename)
+        if not os.path.splitext(icon_path)[1]:
+            # no file extension, so add '.icns'
+            icon_path += '.icns'
+        icon = NSImage.alloc().initWithContentsOfFile_(
+               icon_path)
+        if not icon:
+            icon = NSImage.imageNamed_(NSApplicationIcon)
+        return icon
 
     def getApplicationBundleInfo_(self, app_path):
         '''Uses Foundation methods to read an application's 
@@ -116,8 +135,8 @@ class MTMainWindowController(NSWindowController):
                       'CFBundleShortVersionString', '')
             self.identifierFld.setStringValue_(identifier)
             self.versionFld.setStringValue_(version)
-            self.installLocationFld.setStringValue_(
-                u'/Applications')
+            icon = self.getApplicationIcon_(pathname)
+            self.iconView.setImage_(icon)
             
     @IBAction
     def buildPackage_(self, sender):

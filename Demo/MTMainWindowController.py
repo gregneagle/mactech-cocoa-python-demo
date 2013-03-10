@@ -169,6 +169,9 @@ class MTMainWindowController(NSWindowController):
             self.versionFld.setStringValue_(version)
             icon = self.getApplicationIcon_(pathname)
             self.iconView.setImage_(icon)
+            if not pathname.startswith('/Volumes'):
+                self.installLocationFld.setStringValue_(
+                    os.path.dirname(pathname))
             
     @IBAction
     def buildPackage_(self, sender):
@@ -209,6 +212,3 @@ class MTMainWindowController(NSWindowController):
             self.installLocationFld.setStringValue_(
                 new_path)
 
-    def awakeFromNib(self):
-        self.getApplication_(self)
-        self.installLocationFld.setStringValue_(u'/Applications')

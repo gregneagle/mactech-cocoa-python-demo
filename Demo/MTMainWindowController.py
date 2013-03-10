@@ -30,12 +30,12 @@ class MTMainWindowController(NSWindowController):
         panel = NSOpenPanel.openPanel()
         # allow only .app files
         panel.setAllowedFileTypes_(['app'])
-        # set the intiallly displayed directory
+        # set the intially displayed directory
         # to /Applications
         panel.setDirectoryURL_(
             NSURL.fileURLWithPath_('/Applications'))
         # set the default button name to
-        # 'Select' instead of the default 'Save'
+        # 'Select' instead of the default 'Open'
         panel.setPrompt_(u'Select')
         # set a custom panel title
         # instead of the default 'Open'
@@ -51,6 +51,38 @@ class MTMainWindowController(NSWindowController):
             # user clicked Cancel
             return None
 
+    def getInstallPath(self):
+        '''Display NSOpenPanel to get the path to
+           a directory.
+           Returns a pathname or None'''
+                    
+        # instantiate open panel object
+        panel = NSOpenPanel.openPanel()
+        # disallow file selection
+        panel.setCanChooseFiles_(False)
+        # allow directory selection
+        panel.setCanChooseDirectories_(True)
+        # set the intially displayed directory
+        # to /Applications
+        panel.setDirectoryURL_(
+            NSURL.fileURLWithPath_('/Applications'))
+        # set the default button name to
+        # 'Select' instead of the default 'Open'
+        panel.setPrompt_(u'Select')
+        # set a custom panel title
+        # instead of the default 'Open'
+        panel.setTitle_(u'Select a directory')
+                    
+        # show the Open panel
+        result = panel.runModal()
+        if result:
+            # return the pathname from the
+            # first (only) URL
+            return panel.URLs()[0].path()
+        else:
+            # user clicked Cancel
+            return None
+                
     def getApplicationIcon_(self, app_path):
         '''Returns an icon for display'''
         app_name = os.path.basename(app_path)
@@ -169,6 +201,13 @@ class MTMainWindowController(NSWindowController):
             subprocess.check_call(cmd)
         except subprocess.CalledProcessError, err:
             NSLog('ERROR: %s' % err)
+
+    @IBAction
+    def selectInstallDirectory_(self, sender):
+        new_path = self.getInstallPath()
+        if new_path:
+            self.installLocationFld.setStringValue_(
+                new_path)
 
     def awakeFromNib(self):
         self.getApplication_(self)

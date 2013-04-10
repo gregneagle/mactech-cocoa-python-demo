@@ -197,6 +197,9 @@ class MTMainWindowController(NSWindowController):
         # start progress sheet
         NSApp.beginSheet_modalForWindow_modalDelegate_didEndSelector_contextInfo_(
             self.progressPanel, self.window(), self, None, None)
+                
+        # start progress indicator animation
+        self.progressIndicator.startAnimation_(self)
         
         # call pkgbuild to build our package
         pkgbuild = '/usr/bin/pkgbuild'
@@ -214,23 +217,45 @@ class MTMainWindowController(NSWindowController):
         pool = NSAutoreleasePool.alloc().init()
         
         # run command
-        try:
-            subprocess.check_call(command)
-        except subprocess.CalledProcessError, err:
-            NSLog('ERROR: %s' % err)
+        proc = subprocess.Popen(command, shell=False,
+                                bufsize=-1,
+                                stdin=subprocess.PIPE,
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+        (out, err) = proc.communicate()
+        for line in out.splitlines():
+            NSLog(line)
     
+        error_message = ""
+        if proc.returncode != 0:
+            NSLog('ERROR: %s' % err)
+            error_message = err
+            
         # tell main thread we're done
         self.performSelectorOnMainThread_withObject_waitUntilDone_(
-            self.packageBuildComplete, None, NO)
+            self.packageBuildComplete_, error_message, NO)
                 
         # Clean up autorelease pool
         del pool
 
-    def packageBuildComplete(self):
+    def packageBuildComplete_(self, error_message):
         # end modal sheet and close the panel
         NSApp.endSheet_(self.progressPanel)
         self.progressPanel.orderOut_(self)
+        if not error_message:
+            return
 
+        # We have an error message.
+        # Display a model alert
+        alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat_(
+                "Package Creation Error",
+                "OK",
+                None,
+                None,
+                error_message)
+        alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo_(
+            self.window(), self, None, None)
+            
     @IBAction
     def selectInstallDirectory_(self, sender):
         new_path = self.getInstallPath()

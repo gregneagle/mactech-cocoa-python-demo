@@ -20,6 +20,8 @@ class MTMainWindowController(NSWindowController):
     identifierFld = IBOutlet()
     versionFld = IBOutlet()
     iconView = IBOutlet()
+    progressPanel = IBOutlet()
+    progressIndicator = IBOutlet()
     
     def getApplicationPath(self):
         '''Display NSOpenPanel to get the path to an
@@ -192,6 +194,10 @@ class MTMainWindowController(NSWindowController):
             # user cancelled Save dialog
             return
         
+        # start progress sheet
+        NSApp.beginSheet_modalForWindow_modalDelegate_didEndSelector_contextInfo_(
+            self.progressPanel, self.window(), self, None, None)
+        
         # call pkgbuild to build our package
         pkgbuild = '/usr/bin/pkgbuild'
         cmd = [pkgbuild,
@@ -200,10 +206,30 @@ class MTMainWindowController(NSWindowController):
                '--identifier', identifier,
                '--version', version,
                save_path]
+        NSThread.detachNewThreadSelector_toTarget_withObject_(
+            self.runCommandOnThread_, self, cmd)
+
+    def runCommandOnThread_(self, command):
+        # Autorelease pool for memory management
+        pool = NSAutoreleasePool.alloc().init()
+        
+        # run command
         try:
-            subprocess.check_call(cmd)
+            subprocess.check_call(command)
         except subprocess.CalledProcessError, err:
             NSLog('ERROR: %s' % err)
+    
+        # tell main thread we're done
+        self.performSelectorOnMainThread_withObject_waitUntilDone_(
+            self.packageBuildComplete, None, NO)
+                
+        # Clean up autorelease pool
+        del pool
+
+    def packageBuildComplete(self):
+        # end modal sheet and close the panel
+        NSApp.endSheet_(self.progressPanel)
+        self.progressPanel.orderOut_(self)
 
     @IBAction
     def selectInstallDirectory_(self, sender):

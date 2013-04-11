@@ -19,16 +19,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C0300C00166C090200678AC4 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0300C00166C090200678AC4 /* Application Packager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Application Packager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0300C04166C090200678AC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C0300C06166C090200678AC4 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
 		C0300C09166C090200678AC4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		C0300C0A166C090200678AC4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C0300C0B166C090200678AC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C0300C0E166C090200678AC4 /* Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; sourceTree = "<group>"; };
+		C0300C0E166C090200678AC4 /* Application Packager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Application Packager-Info.plist"; sourceTree = "<group>"; };
 		C0300C10166C090200678AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C0300C12166C090200678AC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C0300C14166C090200678AC4 /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
+		C0300C14166C090200678AC4 /* Application Packager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Application Packager-Prefix.pch"; sourceTree = "<group>"; };
 		C0300C16166C090200678AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		C0300C18166C090200678AC4 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		C0300C1A166C090200678AC4 /* MTAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MTAppDelegate.py; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		C0300C01166C090200678AC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C0300C00166C090200678AC4 /* Demo.app */,
+				C0300C00166C090200678AC4 /* Application Packager.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,10 +101,10 @@
 		C0300C0D166C090200678AC4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C0300C0E166C090200678AC4 /* Demo-Info.plist */,
+				C0300C0E166C090200678AC4 /* Application Packager-Info.plist */,
 				C0300C0F166C090200678AC4 /* InfoPlist.strings */,
 				C0300C12166C090200678AC4 /* main.m */,
-				C0300C14166C090200678AC4 /* Demo-Prefix.pch */,
+				C0300C14166C090200678AC4 /* Application Packager-Prefix.pch */,
 				C0300C15166C090200678AC4 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -113,9 +113,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C0300BFF166C090200678AC4 /* Demo */ = {
+		C0300BFF166C090200678AC4 /* Application Packager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0300C21166C090200678AC4 /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = C0300C21166C090200678AC4 /* Build configuration list for PBXNativeTarget "Application Packager" */;
 			buildPhases = (
 				C0300BFC166C090200678AC4 /* Sources */,
 				C0300BFD166C090200678AC4 /* Frameworks */,
@@ -125,9 +125,9 @@
 			);
 			dependencies = (
 			);
-			name = Demo;
+			name = "Application Packager";
 			productName = Demo;
-			productReference = C0300C00166C090200678AC4 /* Demo.app */;
+			productReference = C0300C00166C090200678AC4 /* Application Packager.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +140,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = MacTech;
 			};
-			buildConfigurationList = C0300BFA166C090200678AC4 /* Build configuration list for PBXProject "Demo" */;
+			buildConfigurationList = C0300BFA166C090200678AC4 /* Build configuration list for PBXProject "Application Packager" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -152,7 +152,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C0300BFF166C090200678AC4 /* Demo */,
+				C0300BFF166C090200678AC4 /* Application Packager */,
 			);
 		};
 /* End PBXProject section */
@@ -267,9 +267,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
-				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Demo/Application Packager-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Application Packager-Info.plist";
+				PRODUCT_NAME = "Application Packager";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -278,9 +278,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
-				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Demo/Application Packager-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Application Packager-Info.plist";
+				PRODUCT_NAME = "Application Packager";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -288,7 +288,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C0300BFA166C090200678AC4 /* Build configuration list for PBXProject "Demo" */ = {
+		C0300BFA166C090200678AC4 /* Build configuration list for PBXProject "Application Packager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0300C1F166C090200678AC4 /* Debug */,
@@ -297,7 +297,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0300C21166C090200678AC4 /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		C0300C21166C090200678AC4 /* Build configuration list for PBXNativeTarget "Application Packager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0300C22166C090200678AC4 /* Debug */,

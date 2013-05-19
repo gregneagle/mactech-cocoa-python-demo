@@ -159,22 +159,25 @@ class MTMainWindowController(NSWindowController):
     @IBAction
     def getApplication_(self, sender):
         pathname = self.getApplicationPath()
+        self.getApplicationInfo_(pathname)
+
+    def getApplicationInfo_(self, pathname):
         if pathname:
             self.applicationFld.setStringValue_(pathname)
             info_dict = self.getApplicationBundleInfo_(
-                        pathname)
+                             pathname)
             identifier = info_dict.get(
-                         'CFBundleIdentifier', '')
+                                       'CFBundleIdentifier', '')
             version = info_dict.get(
-                      'CFBundleShortVersionString', '')
+                                    'CFBundleShortVersionString', '')
             self.identifierFld.setStringValue_(identifier)
             self.versionFld.setStringValue_(version)
             icon = self.getApplicationIcon_(pathname)
             self.iconView.setImage_(icon)
             if not pathname.startswith('/Volumes'):
                 self.installLocationFld.setStringValue_(
-                    os.path.dirname(pathname))
-            
+                                        os.path.dirname(pathname))
+
     @IBAction
     def buildPackage_(self, sender):
         applicationPath = self.applicationFld.stringValue()
@@ -263,3 +266,4 @@ class MTMainWindowController(NSWindowController):
             self.installLocationFld.setStringValue_(
                 new_path)
 
+    

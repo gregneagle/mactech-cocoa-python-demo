@@ -22,16 +22,35 @@ class MTMainWindowController(NSWindowController):
     iconView = IBOutlet()
     progressPanel = IBOutlet()
     progressIndicator = IBOutlet()
+    outlineBox = IBOutlet()
     
     def initMainWindow(self):
         self.window().registerForDraggedTypes_(
                                 [NSFilenamesPboardType])
         if not self.applicationFld.stringValue():
             self.getApplication_(self)
-                
+
+    def fileIsApplicationBundle_(self, filename):
+        kind, error = NSWorkspace.sharedWorkspace(
+        ).typeOfFile_error_(filename, None)
+        if not error:
+            if kind == u"com.apple.application-bundle":
+                return True
+        return False
+
     def draggingEntered_(self, sender):
-        return NSDragOperationLink
-        
+        pboard = sender.draggingPasteboard()
+        if NSFilenamesPboardType in pboard.types():
+            files = pboard.propertyListForType_(
+                                NSFilenamesPboardType)
+            if self.fileIsApplicationBundle_(files[0]):
+                self.outlineBox.setTransparent_(NO)
+                return NSDragOperationLink
+        return NSDragOperationNone
+    
+    def draggingExited_(self, sender):
+        self.outlineBox.setTransparent_(YES)
+
     def performDragOperation_(self, sender):
         pboard = sender.draggingPasteboard()
         if NSFilenamesPboardType in pboard.types():
@@ -40,6 +59,9 @@ class MTMainWindowController(NSWindowController):
             self.getApplicationInfo_(files[0])
             return YES
         return NO
+    
+    def concludeDragOperation_(self, sender):
+        self.outlineBox.setTransparent_(YES)
 
     def getApplicationPath(self):
         '''Display NSOpenPanel to get the path to an

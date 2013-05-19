@@ -16,8 +16,7 @@ class MTAppDelegate(NSObject):
     
     def applicationDidFinishLaunching_(self, sender):
         NSLog("Application did finish launching.")
-        if not self.main_window_controller.applicationFld.stringValue():
-            self.main_window_controller.getApplication_(self)
+        self.main_window_controller.initMainWindow()
 
     def application_openFile_(self, app, filename):
         self.main_window_controller.getApplicationInfo_(

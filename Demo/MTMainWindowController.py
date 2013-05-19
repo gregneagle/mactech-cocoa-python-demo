@@ -23,6 +23,24 @@ class MTMainWindowController(NSWindowController):
     progressPanel = IBOutlet()
     progressIndicator = IBOutlet()
     
+    def initMainWindow(self):
+        self.window().registerForDraggedTypes_(
+                                [NSFilenamesPboardType])
+        if not self.applicationFld.stringValue():
+            self.getApplication_(self)
+                
+    def draggingEntered_(self, sender):
+        return NSDragOperationLink
+        
+    def performDragOperation_(self, sender):
+        pboard = sender.draggingPasteboard()
+        if NSFilenamesPboardType in pboard.types():
+            files = pboard.propertyListForType_(
+                                NSFilenamesPboardType)
+            self.getApplicationInfo_(files[0])
+            return YES
+        return NO
+
     def getApplicationPath(self):
         '''Display NSOpenPanel to get the path to an
         application to package.
